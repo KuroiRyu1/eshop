@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,17 +17,14 @@
 
 <body>
     <div class="container">
-        <form action="logincheck.php" method="post" class="col-md-4">
-            <div class="form-group">
-                <label for="Username">Tên đăng nhập</label>
-                <input id="Username" class="form-control" type="text" name="Username">
-            </div>
-            <div class="form-group">
-                <label for="Password">Mật Khẩu</label>
-                <input id="Password" class="form-control" type="password" name="Password">
-            </div>
-            <Button class="btn btn-primary" type="submit">Đăng nhập</Button>
-        </form>
+        <p>Xin chào <?= $_SESSION['FullName'] ?? "Khách" ?></p>
+        <?php
+        if (isset($_SESSION["FullName"])) {
+            ?>
+            <a href="logout.php" class="btn btn-danger">Đăng xuất</a>
+            <?php
+        }
+        ?>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
